@@ -1,0 +1,12 @@
+CREATE TABLE farm (
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    dueño_id INTEGER REFERENCES personas(id),
+    ubicacion_id INTEGER REFERENCES ubicaciones(id),
+    area_total DECIMAL(10, 2) NOT NULL, -- En hectáreas
+    certificacion_organica BOOLEAN DEFAULT FALSE,
+    fecha_adquisicion DATE,
+    observaciones TEXT,
+    activa BOOLEAN DEFAULT TRUE
+);
