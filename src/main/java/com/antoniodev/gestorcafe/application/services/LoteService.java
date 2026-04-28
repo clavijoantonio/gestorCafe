@@ -3,21 +3,21 @@ package com.antoniodev.gestorcafe.application.services;
 import com.antoniodev.gestorcafe.domain.models.Lote;
 import com.antoniodev.gestorcafe.domain.ports.in.CreateLoteUseCase;
 import com.antoniodev.gestorcafe.domain.ports.in.DeleteLoteUseCase;
-import com.antoniodev.gestorcafe.domain.ports.in.RetriveLoteUseCase;
+import com.antoniodev.gestorcafe.domain.ports.in.RetrieveLoteUseCase;
 import com.antoniodev.gestorcafe.domain.ports.in.UpdateLoteUseCase;
 
 import java.util.List;
 import java.util.Optional;
 
-public class LoteService implements CreateLoteUseCase, RetriveLoteUseCase, UpdateLoteUseCase, DeleteLoteUseCase {
+public class LoteService implements CreateLoteUseCase, RetrieveLoteUseCase, UpdateLoteUseCase, DeleteLoteUseCase {
     private final CreateLoteUseCase createLoteUseCase;
-    private final RetriveLoteUseCase retriveLoteUseCase;
+    private final RetrieveLoteUseCase retrieveLoteUseCase;
     private final UpdateLoteUseCase updateLoteUseCase;
     private final DeleteLoteUseCase deleteLoteUseCase;
 
-    public LoteService(CreateLoteUseCase createLoteUseCase, RetriveLoteUseCase retriveLoteUseCase, UpdateLoteUseCase updateLoteUseCase, DeleteLoteUseCase deleteLoteUseCase) {
+    public LoteService(CreateLoteUseCase createLoteUseCase, RetrieveLoteUseCase retriveLoteUseCase, UpdateLoteUseCase updateLoteUseCase, DeleteLoteUseCase deleteLoteUseCase) {
         this.createLoteUseCase = createLoteUseCase;
-        this.retriveLoteUseCase = retriveLoteUseCase;
+        this.retrieveLoteUseCase = retriveLoteUseCase;
         this.updateLoteUseCase = updateLoteUseCase;
         this.deleteLoteUseCase = deleteLoteUseCase;
     }
@@ -28,18 +28,18 @@ public class LoteService implements CreateLoteUseCase, RetriveLoteUseCase, Updat
     }
 
     @Override
-    public Lote deleteLote(Long id) {
+    public boolean deleteLote(Long id) {
         return deleteLoteUseCase.deleteLote(id);
     }
 
     @Override
     public Optional<Lote> getLote(Long id) {
-        return retriveLoteUseCase.getLote(id);
+        return retrieveLoteUseCase.getLote(id);
     }
 
     @Override
-    public List<Lote> getAll() {
-        return retriveLoteUseCase.getAll();
+    public List<Lote> getAllLote() {
+        return retrieveLoteUseCase.getAllLote();
     }
 
     @Override

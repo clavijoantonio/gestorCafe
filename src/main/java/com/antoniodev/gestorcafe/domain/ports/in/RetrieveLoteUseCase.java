@@ -5,8 +5,9 @@ import com.antoniodev.gestorcafe.domain.models.Lote;
 import java.util.List;
 import java.util.Optional;
 
-public interface RetriveLoteUseCase {
+public interface RetrieveLoteUseCase {
+
     Optional<Lote> getLote(Long id);
 
-    List<Lote> getAll();
+    List<Lote> getAllLote();
 }
